@@ -10,9 +10,9 @@ int main(int argc, char** argv) {
 	int opcao(0), num(0);
 	do{
 		do{
-			printf("\nDigite:\n[1] - INSERIR info no INICIO da lista\n[2] - INSERIR info no FIM da lista\n[3] - REMOVE info no INICIO da lista\n[4] - REMOVE info no FIM da lista\n[5] - REMOVE info SOLICIDATO (KEY), da lista\n[6] - TAMANHO da lista\n[7] - MOSTRAR a lista COMPLETA\n[8] - MOSTRA o INICIO da lista\n[9] - MOSTRA o FIM da lista\n[10] - APAGAR a lista\n[11] - SAIR\nSua opcao: ");
+			printf("\nDigite:\n[1] - INSERIR info no INICIO da lista\n[2] - INSERIR info no FIM da lista\n[3] - REMOVE info no INICIO da lista\n[4] - REMOVE info no FIM da lista\n[5] - REMOVE info SOLICIDATO (KEY), da lista\n[6] - TAMANHO da lista\n[7] - MOSTRAR do INICIO PARA O FIM\n[8] - MOSTRAR do FIM PARA O INICIO\n[9] - MOSTRA o INICIO da lista\n[10] - MOSTRA o FIM da lista\n[11] - APAGAR a lista\n[12] - SAIR\nSua opcao: ");
 			scanf(" %i", &opcao);
-		}while(opcao < 1 || opcao > 11);
+		}while(opcao < 1 || opcao > 12);
 	
 	
 	//iniciando a tela de escolha
@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
 				}
 				else{
 					printf("\nInfo: [");
-					mostraLista(listaPTR);
+					mostraListaInicioFim(listaPTR);
 					printf("]\n");
 				}
 				break;
@@ -86,7 +86,9 @@ int main(int argc, char** argv) {
 					printf("\nA lista esta vazia!\n");
 				}
 				else{
-					mostraInicio(listaPTR);
+					printf("\nInfo: [");
+					mostraListaFimInicio(listaPTR);
+					printf("]\n");
 				}
 				break;
 			case 9:
@@ -94,10 +96,18 @@ int main(int argc, char** argv) {
 					printf("\nA lista esta vazia!\n");
 				}
 				else{
+					mostraInicio(listaPTR);
+				}
+				break;
+			case 10:
+				if(listaPTR == NULL){
+					printf("\nA lista esta vazia!\n");
+				}
+				else{
 					mostraFim(listaPTR);
 				};
 				break;
-			case 10:
+			case 11:
 				if(listaPTR == NULL){
 					printf("\nLista APAGADA!\n");
 				}
@@ -107,11 +117,11 @@ int main(int argc, char** argv) {
 					listaPTR = NULL;
 				};
 				break;
-			case 11:
+			case 12:
 				printf("\n\n\tObrigado por utilizar o software FEMASS\t\n\n");
 				break;
 		}
-	}while(opcao != 11);
+	}while(opcao != 12);
 	
 	system("PAUSE");
 	return 0;

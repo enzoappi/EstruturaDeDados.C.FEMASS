@@ -109,11 +109,22 @@ void size(minhaLista* listaPTR){
 	printf("\nO tamanho da lista eh: %d\n", cont);
 }
 
-void mostraLista(minhaLista* listaPTR){
+void mostraListaInicioFim(minhaLista* listaPTR){
 	minhaLista* ptr = listaPTR;
 	do{
 		printf(" %d ", ptr->info);
 		ptr = ptr->proximo;	
+	}while(ptr != NULL);
+}
+
+void mostraListaFimInicio(minhaLista* listaPTR){
+	minhaLista* ptr = listaPTR;
+	while(ptr->proximo != NULL){
+		ptr = ptr->proximo;	
+	}
+	do{
+		printf(" %d ", ptr->info);
+		ptr = ptr->anterior;
 	}while(ptr != NULL);
 }
 
