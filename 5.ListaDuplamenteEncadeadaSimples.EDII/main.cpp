@@ -10,9 +10,9 @@ int main(int argc, char** argv) {
 	int opcao(0), num(0);
 	do{
 		do{
-			printf("\nDigite:\n[1] - INSERIR info no INICIO da lista\n[2] - INSERIR info no FIM da lista\n[3] - REMOVE info no INICIO da lista\n[4] - REMOVE info no FIM da lista\n[5] - REMOVE info SOLICIDATO (KEY), da lista\n[6] - TAMANHO da lista\n[7] - MOSTRAR do INICIO PARA O FIM\n[8] - MOSTRAR do FIM PARA O INICIO\n[9] - MOSTRA o INICIO da lista\n[10] - MOSTRA o FIM da lista\n[11] - APAGAR a lista\n[12] - SAIR\nSua opcao: ");
+			printf("\nDigite:\n[1] - INSERIR info no INICIO da lista\n[2] - INSERIR info no FIM da lista\n[3] - REMOVE info no INICIO da lista\n[4] - REMOVE info no FIM da lista\n[5] - BUSCA info SOLICIDATO (KEY)\n[6] - REMOVE info SOLICIDATO (KEY), da lista\n[7] - TAMANHO da lista\n[8] - MOSTRAR do INICIO PARA O FIM\n[9] - MOSTRAR do FIM PARA O INICIO\n[10] - MOSTRA o INICIO da lista\n[11] - MOSTRA o FIM da lista\n[12] - APAGAR a lista\n[13] - SAIR\nSua opcao: ");
 			scanf(" %i", &opcao);
-		}while(opcao < 1 || opcao > 12);
+		}while(opcao < 1 || opcao > 13);
 	
 	
 	//iniciando a tela de escolha
@@ -60,10 +60,20 @@ int main(int argc, char** argv) {
 				else{
 					printf("\nDigite um numero inteiro e aleatorio: ");
 					scanf(" %i", &num);
-					listaPTR = removeKey(listaPTR, num);
+					buscaKey(listaPTR, num);
 				}
 				break;
 			case 6:
+				if(listaPTR == NULL){
+					printf("\nNao ha mais elementos para remover!\nA lista ja esta vazia!\n");
+				}
+				else{
+					printf("\nDigite um numero inteiro e aleatorio: ");
+					scanf(" %i", &num);
+					listaPTR = removeKey(listaPTR, num);
+				}
+				break;
+			case 7:
 				if(listaPTR == NULL){
 					printf("\nA lista esta vazia!\n");
 				}
@@ -71,7 +81,7 @@ int main(int argc, char** argv) {
 					size(listaPTR);
 				}
 				break;
-			case 7:
+			case 8:
 				if(listaPTR == NULL){
 					printf("\nA lista esta vazia!\n");
 				}
@@ -81,7 +91,7 @@ int main(int argc, char** argv) {
 					printf("]\n");
 				}
 				break;
-			case 8:
+			case 9:
 				if(listaPTR == NULL){
 					printf("\nA lista esta vazia!\n");
 				}
@@ -91,7 +101,7 @@ int main(int argc, char** argv) {
 					printf("]\n");
 				}
 				break;
-			case 9:
+			case 10:
 				if(listaPTR == NULL){
 					printf("\nA lista esta vazia!\n");
 				}
@@ -99,7 +109,7 @@ int main(int argc, char** argv) {
 					mostraInicio(listaPTR);
 				}
 				break;
-			case 10:
+			case 11:
 				if(listaPTR == NULL){
 					printf("\nA lista esta vazia!\n");
 				}
@@ -107,7 +117,7 @@ int main(int argc, char** argv) {
 					mostraFim(listaPTR);
 				};
 				break;
-			case 11:
+			case 12:
 				if(listaPTR == NULL){
 					printf("\nLista APAGADA!\n");
 				}
@@ -117,11 +127,11 @@ int main(int argc, char** argv) {
 					listaPTR = NULL;
 				};
 				break;
-			case 12:
+			case 13:
 				printf("\n\n\tObrigado por utilizar o software FEMASS\t\n\n");
 				break;
 		}
-	}while(opcao != 12);
+	}while(opcao != 13);
 	
 	system("PAUSE");
 	return 0;

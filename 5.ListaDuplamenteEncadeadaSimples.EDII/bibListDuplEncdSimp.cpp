@@ -61,41 +61,52 @@ minhaLista* removeFim(minhaLista* listaPTR){
 	return listaPTR;
 }
 
-minhaLista* removeKey(minhaLista* listaPTR, int valor){
-	minhaLista* ptrTempAnt = listaPTR;
-	minhaLista* ptrTempPost = listaPTR;
-	while(ptrTempPost->info != valor && ptrTempPost->proximo != NULL){
-		ptrTempAnt = ptrTempPost;
-		ptrTempPost = ptrTempPost->proximo;
+void buscaKey(minhaLista* listaPTR, int valor){
+	minhaLista* ptrTemp = listaPTR;
+	while(ptrTemp->info != valor && ptrTemp->proximo != NULL){
+		ptrTemp = ptrTemp->proximo;
 	}
-	if(ptrTempPost->info != valor){
+	if(ptrTemp->info != valor){
+		printf("\nNao encontrei o numero desejado, na lista!\n");
+	}
+	else{
+		printf("\nEncontrei!\nO numero desejado, esta contido na lista!\n");
+	}
+}
+
+
+minhaLista* removeKey(minhaLista* listaPTR, int valor){
+	minhaLista* ptrTemp = listaPTR;
+	while(ptrTemp->info != valor &&  ptrTemp->proximo != NULL){
+		ptrTemp = ptrTemp->proximo;
+	}
+	if(ptrTemp->info != valor){
 		printf("\nNao encontrei o numero a ser removido, na lista!\n");
 		return listaPTR;
 	}
 	else{
-		if(ptrTempPost->anterior == NULL && ptrTempPost->proximo == NULL){
-			free(ptrTempPost);
+		if(ptrTemp->anterior == NULL && ptrTemp->proximo == NULL){
+			free(ptrTemp);
 			listaPTR = NULL; //atribuo um valor nulo, pra ela.
 			return listaPTR;
 		}
-		else if(ptrTempPost->anterior == NULL && ptrTempPost->proximo != NULL){
-			listaPTR = ptrTempPost->proximo;
-			listaPTR->anterior = NULL;
-			free(ptrTempPost);
-			return listaPTR;
-		}
-		else if(ptrTempPost->anterior != NULL && ptrTempPost->proximo != NULL){
-			minhaLista* nohFrentePtrPost = ptrTempPost->proximo;
-			nohFrentePtrPost->anterior = ptrTempAnt;
-			ptrTempAnt->proximo = nohFrentePtrPost;
-			free(ptrTempPost);
-			return listaPTR;
-		}
+		else if(ptrTemp->anterior == NULL){
+				ptrTemp->proximo->anterior = NULL;
+				listaPTR = ptrTemp->proximo;
+				free(ptrTemp);
+				return listaPTR;
+			}
+		else if(ptrTemp->proximo == NULL){
+				ptrTemp->anterior->proximo = NULL;
+				free(ptrTemp);
+				return listaPTR;
+			}
 		else{
-			ptrTempAnt->proximo = NULL;
-			free(ptrTempPost);
+			ptrTemp->anterior->proximo = ptrTemp->proximo;
+			ptrTemp->proximo->anterior = ptrTemp->anterior;
+			free(ptrTemp);
 			return listaPTR;
-		}
+		}	
 	}
 }
 

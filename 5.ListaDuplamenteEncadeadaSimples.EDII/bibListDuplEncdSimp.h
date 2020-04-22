@@ -13,6 +13,7 @@ minhaLista* insereInicio(minhaLista* listaPTR, int valor);
 minhaLista* insereFim(minhaLista* listaPTR, int valor);
 minhaLista* removeInicio(minhaLista* listaPTR);
 minhaLista* removeFim(minhaLista* listaPTR);
+void buscaKey(minhaLista* listaPTR, int valor);
 minhaLista* removeKey(minhaLista* listaPTR, int valor);
 void size(minhaLista* listaPTR);
 void mostraListaInicioFim(minhaLista* listaPTR);
